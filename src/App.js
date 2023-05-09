@@ -12,3 +12,11 @@ function App() {
 }
 
 export default App;
+
+// echo "# my-assin" >> README.md
+// git init
+// git add README.md
+// git commit -m "first commit"
+// git branch -M main
+// git remote add origin https://github.com/jayed-phero/my-assin.git
+// git push -u origin main

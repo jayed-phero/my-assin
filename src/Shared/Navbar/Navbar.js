@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav class="relative bg-white shadow dark:bg-gray-800">
-            <div class="max-w-6xl xl:px-0 md:px-11 px-5 py-3 mx-auto md:flex">
+            <div class="max-w-6xl xl:px-0 md:px-11 px-5 py-1 mx-auto md:flex">
                 <div class="flex items-center justify-between w-ful">
                     <Link to='/'
                         className=' font-bold flex items-center'
