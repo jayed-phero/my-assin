@@ -1,8 +1,17 @@
 import React from 'react';
 import './Products.css';
 import { FaCanadianMapleLeaf } from "react-icons/fa";
+import ProductRow from './ProductRow';
 
 const Products = () => {
+
+    const images = [
+        "https://images.unsplash.com/photo-1564859228273-274232fdb516?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydCUyMG1vY2t1cHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1618677603286-0ec56cb6e1b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+    ]
     return (
         <div className='max-w-6xl px-6 md:px-11 xl:px-0 py-10 mx-auto'>
             {/* <div class="text-center">
@@ -20,6 +29,19 @@ const Products = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia error alias, adipisci rem similique, at omnis eligendi optio eos harum.
                 </p>
             </div> */}
+
+            <div
+                className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 py-7'
+            >
+                {
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9].map((data, i) =>
+                        <ProductRow
+                            data={data}
+                            key={i}
+                        />
+                    )
+                }
+            </div>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
-        <footer class="bg-white dark:bg-gray-900">
+        <footer class="bg-gray-900 dark:bg-gray-900">
             <div class="max-w-6xl xl:px-0 md:px-11 p-6 mx-auto">
                 <div class="lg:flex">
                     <div class="w-full -mx-6 lg:w-2/5">
@@ -15,7 +15,7 @@ const Footer = () => {
                                     className='md:h-20 md:w-20 h-16 w-16 rounded-full'
                                 />
                                 <h3
-                                    className='logo md:-ml-2 text-3xl md:text-4xl md:w-44'
+                                    className='logo md:-ml-2 text-3xl md:text-4xl md:w-44 text-white'
                                 >MyShop</h3>
                             </Link>
 

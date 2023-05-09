@@ -5,3 +5,15 @@
 .bottom_bdr{
     height: 1px;
 }
+
+.cart:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .card:hover {
+    transform: translateX(-10px);
+  }
+
+  .bg{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
