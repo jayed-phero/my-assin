@@ -5,8 +5,9 @@ import { TbPointFilled } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import CheckModal from './CheckModal';
 import { GrClose, GrCloss, GrFormClose } from "react-icons/gr";
+import { toast } from 'react-hot-toast';
 
-export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
+export default function ProductDetailsModal({ isOpen, openModal, closeModal, image_url }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [loader, setLoader] = useState(false);
@@ -70,6 +71,7 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
     const showBtn = () => {
         setLoader(false)
         setShowText(true);
+        toast.success("Added Product successfully!!!")
     }
 
 
@@ -83,6 +85,10 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
 
 
 
+
+    const toastMake = () => {
+        toast.success("Added Product successfully!!!")
+    }
 
     return (
         <>
@@ -157,7 +163,7 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                             </div>
                                         </div>
                                         <div
-                                            className='w-full py-5 pr-5 relative'
+                                            className='w-full py-5 pr-5 relative pl-5 md:pl-0'
                                         >
                                             <GrFormClose
                                                 onClick={closeModal}
@@ -228,7 +234,7 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                                         Add to Cart
                                                         {
                                                             loader ?
-                                                                <div className="w-3 h-3 border-2 ml-3 border-dashed rounded-full animate-spin border-gray-700 inline"></div>
+                                                                <div className="w-3 h-3 border-2 ml-3 border-dashed rounded-full animate-spin border-gray-300 inline"></div>
                                                                 :
                                                                 undefined
                                                         }
