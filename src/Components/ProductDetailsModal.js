@@ -1,9 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import { TbPointFilled } from "react-icons/tb";
 
 export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+    const [quantity, setQuantity] = useState(1);
 
 
     const images =
@@ -15,7 +17,15 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
             "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
         ]
 
-    console.log(images)
+    // console.log(images)
+
+    const listofData = [
+        "Recently  desktop publishing",
+        "Including versions Lorem Ipsum.",
+        "There are many passages",
+        "In some form, injected humour,",
+        "Including versions  Lorem Ipsum.",
+    ]
 
     const handleNext = () => {
         setCurrentImageIndex((currentImageIndex + 1) % images.length);
@@ -25,6 +35,23 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
         setCurrentImageIndex(
             currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1
         );
+    };
+
+    // for bottom indicator
+    const handleClick = (index) => {
+        setCurrentImageIndex(index);
+    };
+
+
+
+    const handleIncrease = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const handleDecrease = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
     };
 
 
@@ -57,34 +84,117 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
 
                                     </Dialog.Title>
-                                    <div className="w-full flex items-start gap-5 p-11 flex-col md:flex-row">
+                                    <div className="w-full flex items-start gap-5 flex-col md:flex-row">
                                         <div
-                                            className='relative w-full'
+                                            className='relative w-full group overflow-hidden'
                                         >
                                             <img src={images[currentImageIndex]} alt="Product"
-                                                className='w-full md:h-80 h-56'
+                                                className='w-full md:h-96 h-56'
                                             />
+
+                                            <div className='flex items-center justify-center'>
+                                                <div className="flex items-center gap-2 absolute bottom-5 justify-center">
+                                                    {images.map((item, index) => (
+                                                        <button
+                                                            key={index}
+                                                            className={`w-[11px] h-[11px] rounded-full bg-white border-2 border-gray-700 ${index === currentImageIndex ? "bg-blue-500" : ""}`}
+                                                            onClick={() => handleClick(index)}
+                                                        >
+
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
                                             <div
-                                                className='w-full absolute top-1/2 left-5 right-5 flex items-center justify-between'
+                                                className=''
                                             >
-                                                <button onClick={handlePrevious}>
+                                                <button
+                                                    onClick={handlePrevious}
+                                                    className='absolute top-1/2 -left-11 group-hover:left-5 transition-all ease-in-out duration-300 text-3xl font-bold text-gray-400'
+                                                >
                                                     <GrFormPrevious />
                                                 </button>
-                                                <button onClick={handleNext}>
+                                                <button
+                                                    onClick={handleNext}
+                                                    className='absolute top-1/2 -right-11 group-hover:right-5 transition-all ease-in-out duration-300 text-3xl font-bold text-gray-400'
+                                                >
                                                     <GrFormNext />
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className='w-full'>
-                                            <button onClick={handlePrevious}>Previous</button>
-                                            <button onClick={handleNext}>Next</button>
+                                        <div
+                                            className='w-full py-5 pr-5'
+                                        >
+                                            <h3 className='text-3xl font-semibold'>Many desktop publishing </h3>
+
+                                            <div
+                                                className='flex items-end gap-2 pt-4'
+                                            >
+                                                <p
+                                                    className='text-gray-400 line-through text-md font-semibold'
+                                                >$35.67</p>
+                                                <p
+                                                    className='text-2xl font-semibold text-red-500'
+                                                >$35.67</p>
+                                            </div>
+
+                                            <div>
+                                                <p
+                                                    className='text-sm text-gray-500 py-3'
+                                                >It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.</p>
+
+                                                <div className='flex flex-col gap-1.5'>
+                                                    {
+                                                        listofData.map((list, i) =>
+                                                            <p
+                                                                key={i}
+                                                                className='text-sm inline text-gray-500 ml-3'
+                                                            >
+                                                                <TbPointFilled
+                                                                    className='text-xl text-gray-700 font-semibold pr-3 inline'
+                                                                />
+                                                                {list}</p>
+                                                        )
+                                                    }
+                                                </div>
+
+                                                <hr
+                                                    className='h-1 mt-4'
+                                                />
+                                                <div
+                                                    className='mb-5 flex items-center gap-5 mt-5'
+                                                >
+                                                    <div className='product-details'>
+                                                        <div className="quantity-container">
+                                                            <button
+                                                                className="quantity-button"
+                                                                disabled={quantity === 1}
+                                                                onClick={handleDecrease}
+                                                            >
+                                                                -
+                                                            </button>
+                                                            <span className="quantity">{quantity}</span>
+                                                            <button
+                                                                className="quantity-button"
+                                                                disabled={quantity === 5}
+                                                                onClick={handleIncrease}
+                                                            >
+                                                                +
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <button className="px-5 text-md rounded-3xl bg-red-500 text-white flex items-center justify-center py-1">Add to Cart</button>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </Dialog.Panel>
