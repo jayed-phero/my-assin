@@ -1,6 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { FiCheckCircle } from "react-icons/fi";
+import { BiCheckDouble, BiHeart } from "react-icons/bi";
+import { GrClose, GrCloss, GrFormClose } from "react-icons/gr";
 
 export default function CheckModal({ open, openCheckModal, closeCheckModal }) {
 
@@ -38,15 +40,35 @@ export default function CheckModal({ open, openCheckModal, closeCheckModal }) {
                                     >
 
                                     </Dialog.Title>
-                                    <div className='p-9 bg-white'>
-                                        <button className="px-5 text-md 
-                                        w-full rounded-3xl bg-black text-white flex items-center justify-center py-2">
-                                            VIEW WISHLIST
-                                        </button>
-                                        <button className="px-5 text-md 
-                                        mt-3 
-                                        w-full rounded-3xl bg-red-500 text-white flex items-center justify-center py-2">CLOSE</button>
+                                    <div className='p-9 bg-white flex flex-col items-center justify-center'>
+                                        <div
+                                            className='border-2 border-gray-700 h-9 w-9 rounded-full flex items-center justify-center text-3xl text-gray-700'
+                                        >
+                                            <BiCheckDouble />
+                                        </div>
+
+                                        <h3 
+                                        className='text-sm  py-6 text-center'
+                                        >Earka pure farka added to wishlist</h3>
+                                        <div className="px-5 text-sm 
+                                        w-full rounded-3xl bg-red-500 hover:bg-black transition-all duration-300 text-white flex items-center justify-center h-11 cursor-pointer">
+                                            <BiHeart
+                                                className='text-2xl pr-2 mt-1'
+                                            />
+                                            <p>VIEW WISHLIST</p>
+                                        </div>
+                                        <div className="px-5 text-sm 
+                                        w-full rounded-3xl bg-red-500 hover:bg-black transition-all duration-300 text-white flex items-center justify-center h-11 mt-3 cursor-pointer"
+                                        onClick={closeCheckModal}
+                                        >
+                                            <p
+                                                className=' pr-2 text-xl mb-1'
+                                            >x</p>
+                                            <p>CLOSE</p>
+                                        </div>
+
                                     </div>
+
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

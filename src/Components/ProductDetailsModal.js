@@ -4,6 +4,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { TbPointFilled } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import CheckModal from './CheckModal';
+import { GrClose, GrCloss, GrFormClose } from "react-icons/gr";
 
 export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -101,7 +102,7 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                     >
 
                                     </Dialog.Title>
-                                    <div className="w-full flex items-start gap-5 flex-col md:flex-row">
+                                    <div className="w-full flex items-start gap-5 flex-col md:flex-row pb-5">
                                         <div
                                             className='relative w-full group overflow-hidden'
                                         >
@@ -140,9 +141,13 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                             </div>
                                         </div>
                                         <div
-                                            className='w-full py-5 pr-5'
+                                            className='w-full py-5 pr-5 relative'
                                         >
-                                            <h3 className='text-3xl font-semibold'>Many desktop publishing </h3>
+                                            <GrFormClose
+                                                onClick={closeModal}
+                                                className='absolute right-3 top-3 text-4xl text-gray-600'
+                                            />
+                                            <h3 className='text-2xl font-semibold mt-3'>Many desktop publishing </h3>
 
                                             <div
                                                 className='flex items-end gap-2 pt-4'
@@ -179,7 +184,7 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                                     className='h-1 mt-4'
                                                 />
                                                 <div
-                                                    className='mb-5 flex items-center gap-5 mt-5'
+                                                    className='flex items-center gap-5 mt-5'
                                                 >
                                                     <div className='product-details'>
                                                         <div className="quantity-container">
@@ -204,16 +209,23 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                                     <button className="px-5 text-md rounded-3xl bg-red-500 text-white flex items-center justify-center py-1">Add to Cart</button>
                                                 </div>
 
-                                                <div className='mt-5'>
+                                                <div className='mt-3'>
                                                     <h3
                                                         onClick={openCheckModal}
-                                                        className='inline text-md cursor-pointer'
+                                                        className='inline text-sm cursor-pointer'
                                                     >
                                                         <AiFillHeart
                                                             className=' inline text-gray-700 pr-2 text-2xl'
                                                         />
                                                         Add to Wishlist
                                                     </h3>
+                                                </div>
+                                                <hr
+                                                    className='h-1 mt-4'
+                                                />
+
+                                                <div className='mt-3'>
+                                                    <h3 className='text-sm text-black font-semibold'>Category: <span className='text-gray-400'>Men</span></h3>
                                                 </div>
 
                                             </div>

@@ -26,19 +26,9 @@ const Products = () => {
         "https://images.unsplash.com/photo-1622445275463-afa2ab738c34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
     ]
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const handleNext = () => {
-        setCurrentImageIndex((currentImageIndex + 1) % images.length);
-    };
 
-    const handlePrevious = () => {
-        setCurrentImageIndex(
-            currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1
-        );
-    };
 
-    
     return (
         <div className='max-w-6xl px-6 md:px-11 xl:px-0 py-10 mx-auto'>
             <div class="text-center">
@@ -56,7 +46,6 @@ const Products = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt ex placeat modi magni quia error alias, adipisci rem similique, at omnis eligendi optio eos harum.
                 </p>
             </div>
-            <div onClick={openModal}>ami</div>
             <div
                 className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 py-7'
             >
