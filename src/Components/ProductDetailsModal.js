@@ -9,7 +9,9 @@ import { GrClose, GrCloss, GrFormClose } from "react-icons/gr";
 export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    let [open, setOpen] = useState(false)
+    const [loader, setLoader] = useState(false);
+    const [showText, setShowText] = useState(false);
+    let [open, setOpen] = useState(false);
 
     function closeCheckModal() {
         setOpen(false)
@@ -63,6 +65,20 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
+    };
+
+    const showBtn = () => {
+        setLoader(false)
+        setShowText(true);
+    }
+
+
+    // for loading and opening modal
+    const loaderFun = () => {
+        setLoader(true);
+        setTimeout(() => {
+            showBtn();
+        }, 1000);
     };
 
 
@@ -206,7 +222,26 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                                         </div>
                                                     </div>
 
-                                                    <button className="px-5 text-md rounded-3xl bg-red-500 text-white flex items-center justify-center py-1">Add to Cart</button>
+                                                    <button className="px-5 text-md rounded-3xl hover:bg-black bg-red-500 text-white flex items-center justify-center py-1 transition-all duration-300 ease-in-out inline"
+                                                        onClick={loaderFun}
+                                                    >
+                                                        Add to Cart
+                                                        {
+                                                            loader ?
+                                                                <div className="w-3 h-3 border-2 ml-3 border-dashed rounded-full animate-spin border-gray-700 inline"></div>
+                                                                :
+                                                                undefined
+                                                        }
+                                                    </button>
+
+                                                    {
+                                                        showText ?
+                                                            <div
+                                                                className='text-xs -ml-2 border-b-2 border-gray-600 hover:text-blue-400 hover:border-blue-400 transition-all ease-in-out duration-300 cursor-pointer'
+                                                            >VIEW CART</div>
+                                                            :
+                                                            undefined
+                                                    }
                                                 </div>
 
                                                 <div className='mt-3'>

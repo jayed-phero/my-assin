@@ -32,14 +32,38 @@ const ProductRow = (openModal) => {
     };
 
 
+    const images =
+        [
+            "https://images.unsplash.com/photo-1564859228273-274232fdb516?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydCUyMG1vY2t1cHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            "https://images.unsplash.com/photo-1618677603286-0ec56cb6e1b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+            "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+            "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        ]
+
+    const [currentImage, setCurrentImage] = useState(images[0]);
+
+    const handleClick = (image) => {
+        setCurrentImage(image);
+    };
+
+
     return (
         <div
-            className='w-full group relative cart group-hover:-ml-20 '
+            className='w-full group relative group-hover:-ml-20 border border-white hover:border-gray-300'
         >
             <div
-                className='w-20 absolute h-full bg-white z-0 left-0 group-hover:-left-20 transition-all duration-500 ease-in-out bg'
+                className='w-20 absolute h-full  bg-white z-0 left-0 group-hover:-left-20 transition-all duration-500 ease-in-out  flex flex-col p-2 gap-2  group-hover:border-l group-hover:border-gray-300 group-hover:border-b  group-hover:border-t '
             >
-
+                {
+                    images.map((image, index) =>
+                        <img
+                            key={index}
+                            src={image}
+                            className='w-full h-16 border-2 border-white hover:border-orange-400 '
+                            onClick={() => handleClick(image)}
+                        />
+                    )
+                }
             </div>
             <div className='w-full'>
                 <div
@@ -49,7 +73,7 @@ const ProductRow = (openModal) => {
                         className='bg-green-700 text-white px-3 py-1 absolute top-3 left-3 text-xs'
                     >SALE!</h3>
                     <img
-                        src='https://images.unsplash.com/photo-1564859228273-274232fdb516?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydCUyMG1vY2t1cHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
+                        src={currentImage}
                         className='w-full h-full'
                     />
 
@@ -154,7 +178,7 @@ const ProductRow = (openModal) => {
                 isOpen={isOpen}
                 openModal={openModal}
                 closeModal={closeModal}
-                // images={images}
+            // images={images}
             />
         </div>
     );
