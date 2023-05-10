@@ -2,11 +2,21 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { TbPointFilled } from "react-icons/tb";
+import { AiFillHeart } from "react-icons/ai";
+import CheckModal from './CheckModal';
 
 export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
+    let [open, setOpen] = useState(false)
 
+    function closeCheckModal() {
+        setOpen(false)
+    }
+
+    function openCheckModal() {
+        setOpen(true)
+    }
 
     const images =
         [
@@ -194,8 +204,25 @@ export default function ProductDetailsModal({ isOpen, openModal, closeModal }) {
                                                     <button className="px-5 text-md rounded-3xl bg-red-500 text-white flex items-center justify-center py-1">Add to Cart</button>
                                                 </div>
 
+                                                <div className='mt-5'>
+                                                    <h3
+                                                        onClick={openCheckModal}
+                                                        className='inline text-md cursor-pointer'
+                                                    >
+                                                        <AiFillHeart
+                                                            className=' inline text-gray-700 pr-2 text-2xl'
+                                                        />
+                                                        Add to Wishlist
+                                                    </h3>
+                                                </div>
+
                                             </div>
                                         </div>
+                                        <CheckModal
+                                            open={open}
+                                            openCheckModal={openCheckModal}
+                                            closeCheckModal={closeCheckModal}
+                                        />
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
